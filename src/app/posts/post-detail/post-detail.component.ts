@@ -29,7 +29,6 @@ export class PostDetailComponent implements OnInit {
       });
       this.postsService.fetchComments(this.postId).subscribe((data) => {
         this.comments = data.comments;
-        console.log(this.comments);
       });
     });
   }
