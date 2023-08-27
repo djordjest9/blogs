@@ -1,0 +1,135 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.search {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin: 25px 0;
+}
+
+.error-message {
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+
+.search input {
+  width: 30%;
+  padding: 6px;
+  font-size: 16px;
+  border-radius: 20px;
+  border-color: transparent;
+  outline: none;
+}
+
+.post-list {
+  list-style: none;
+  padding: 0;
+}
+
+.post-list li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.highlight-link-even {
+  background-color: #1a243581;
+}
+
+.highlight-link-odd {
+  background-color: #ced0d411;
+}
+
+.post-link {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 20px;
+}
+
+.post-list li:hover {
+  background-color: rgba(0, 0, 0, 0.404);
+}
+
+/* novo */
+button {
+  background: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  cursor: pointer;
+}
+
+.page-btn {
+  background: #ddd;
+  color: #2c303a;
+  font-weight: bold;
+  height: 35px;
+  border-radius: 2px;
+  padding: 0 10px;
+  text-transform: uppercase;
+  transition: background 0.3s ease;
+  margin: 0 2px;
+}
+
+.page-btn:first-of-type {
+  margin-left: 0;
+}
+
+.page-btn:last-of-type {
+  margin-right: 0;
+}
+
+.page-btn:not([class$="-page"]) {
+  width: 35px;
+}
+
+.pagination-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+
+.page-btn[class*="-page"] {
+  background: #ccc;
+  font-size: 20px;
+}
+
+.page-btn.active {
+  background: #717790;
+  color: #fff;
+}
+
+.page-btn[disabled] {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.dots {
+  display: flex;
+  align-self: stretch;
+  color: #ddd;
+  font-size: 24px;
+}
+
+.prev-page {
+  margin-right: 8px;
+  padding: 0 12px;
+}
+
+.next-page {
+  margin-left: 8px;
+  padding: 0 12px;
+}
+
+.page-buttons {
+  margin: 0 8px;
+}

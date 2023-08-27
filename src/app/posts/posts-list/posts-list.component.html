@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="search">
+    <input
+      type="text"
+      placeholder="Search..."
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="onSearchTextChange($event)"
+    />
+  </div>
+  <div *ngIf="!isLoading && loadedPosts.length === 0">
+    <app-error-page></app-error-page>
+  </div>
+  <p
+    class="error-message"
+    *ngIf="loadedPosts.length === 0 && searchTerm && !isLoading"
+  >
+    No posts found for '{{ searchTerm }}'.
+  </p>
+  <div *ngIf="isLoading" style="text-align: center">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+  <ul class="post-list" *ngIf="!isLoading">
+    <li
+      *ngFor="let post of loadedPosts; let i = index"
+      [ngClass]="{
+        'highlight-link-even': i % 2 === 0,
+        'highlight-link-odd': i % 2 !== 0
+      }"
+      [routerLink]="['/posts', post.id]"
+    >
+      <a class="post-link">{{ post.title }}</a>
+    </li>
+  </ul>
+  <div *ngIf="loadedPosts.length !== 0" class="pagination-buttons">
+    <button
+      type="button"
+      class="page-btn start-page"
+      [disabled]="currentPage === 1"
+      (click)="onPage(1)"
+    >
+      <span>&laquo;</span>
+    </button>
+    <button
+      type="button"
+      class="page-btn prev-page"
+      (click)="onPage(currentPage - 1)"
+      [disabled]="currentPage === 1"
+    >
+      <span>&lsaquo;</span>
+    </button>
+    <span *ngIf="currentPage > 2" class="dots">...</span>
+    <div class="page-buttons">
+      <button
+        *ngFor="let pageButton of paginationButtons"
+        type="button"
+        class="page-btn"
+        [ngClass]="{ active: pageButton === currentPage }"
+        (click)="onPage(pageButton)"
+      >
+        {{ pageButton }}
+      </button>
+    </div>
+    <span *ngIf="currentPage < numberOfPages - 2" class="dots">...</span>
+    <button
+      type="button"
+      class="page-btn next-page"
+      (click)="onPage(currentPage + 1)"
+      [disabled]="currentPage === numberOfPages"
+    >
+      <span>&rsaquo;</span>
+    </button>
+    <button
+      type="button"
+      class="page-btn end-page"
+      (click)="onPage(numberOfPages)"
+      [disabled]="currentPage === numberOfPages"
+    >
+      <span>&raquo;</span>
+    </button>
+  </div>
+</div>

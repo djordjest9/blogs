@@ -1,0 +1,20 @@
+<div class="post-container">
+  <div *ngIf="postIsLoading" style="text-align: center">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+  <div *ngIf="!postIsLoading" class="post">
+    <p>"{{ post?.body }}"</p>
+    <div class="tags">
+      <p *ngFor="let tag of post?.tags">#{{ tag }}</p>
+    </div>
+    <div class="comments" *ngIf="comments.length > 0">
+      <h2>Comments</h2>
+      <hr />
+      <div *ngFor="let comment of comments">
+        <p class="username">@{{ comment.user.username }}</p>
+        <p class="comment-text">{{ comment.body }}</p>
+        <hr />
+      </div>
+    </div>
+  </div>
+</div>
