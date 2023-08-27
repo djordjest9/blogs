@@ -26,7 +26,6 @@ export class PostDetailComponent implements OnInit {
       this.postsService.fetchPost(this.postId).subscribe((post) => {
         this.post = post;
         this.postIsLoading = false;
-        console.log(this.post);
       });
       this.postsService.fetchComments(this.postId).subscribe((data) => {
         this.comments = data.comments;
